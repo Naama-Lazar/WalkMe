@@ -9,6 +9,7 @@ from tools import search_gmail, send_gmail_reply
 with open("key.txt", "r") as f:
     os.environ["OPENAI_API_KEY"] = f.read().strip()
 
+
 def run_agent():
     """
         Initializes and runs an interactive AI Gmail Assistant.
