@@ -2,7 +2,7 @@ AI Email Response Agent (Technical Assessment)
 A conversational AI agent built with LangChain and OpenAI that orchestrates Gmail operations. This agent allows users to search for specific emails, automatically generates professional response drafts, and sends replies only after user confirmation.
 
 🛠 Features
-Intelligent Search: Uses NLP to find the correct email thread based on user keywords.
+Intelligent Search: Uses LLM to find the correct email thread based on user keywords.
 
 Draft Generation: Context-aware reply generation using GPT-4.
 
