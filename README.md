@@ -28,9 +28,16 @@ Environment: python-dotenv for secure secret management
  Bash
  pip install -r requirements.txt
 
-3. Configure Credentials
- OpenAI: Create a .env file and add OPENAI_API_KEY=your_key_here. Gmail: Place your credentials.json (OAuth Desktop App) in the project root.
+2. Configure Credentials
+ To run this agent, you will need to provide your own credentials:
 
+ OpenAI API: Create a .env file in the root directory and add the key provided by WalkMe:
+
+ Plaintext
+ OPENAI_API_KEY=your_walkme_api_key_here
+ Gmail API: Place your credentials.json (OAuth 2.0 Desktop App) in the project root directory.
+
+ Authentication: On the first run, the agent will open a browser window to authorize your Gmail account and generate a token.json file.
 3. Run the Agent
  Bash
  python main.py
