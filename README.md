@@ -40,6 +40,9 @@ Environment: python-dotenv for secure secret management
 
 
  Authentication: On the first run, the agent will open a browser window to authorize your Gmail account and generate a token.json file.
+
+
+
  
 3. Run the Agent
  Bash
