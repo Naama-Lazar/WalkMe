@@ -22,6 +22,7 @@ Libraries: Install dependencies via pip:
 
 Bash
 pip install -r requirements.txt
+
 2. Configure OpenAI API
 Create a file named .env in the root directory.
 
@@ -30,6 +31,7 @@ Add your OpenAI API key to the file:
 Plaintext
 OPENAI_API_KEY=your_actual_key_here
 (Note: This project also supports loading from a key.txt if preferred.)
+
 
 3. Configure Gmail API (Google Cloud)
 To allow the agent to interact with your Gmail, you must provide your own Google OAuth credentials:
@@ -77,6 +79,3 @@ Do not include the following files in your submission:
 credentials.json (Contains your Google App secrets)
 
 token.json (Contains your personal Gmail access session)
-
-Final Check Before Sending
-Would you like me to generate a .env.example file content for you to include, or do you have everything ready for the ZIP?
