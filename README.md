@@ -47,6 +47,7 @@ Environment: python-dotenv for secure secret management
 3. Run the Agent
  Bash
  python main.py
+
 🧠 Design Decisions & Engineering Notes
 LLM Agentic Reasoning (ReAct)
 Unlike a scripted chatbot, this agent uses an LLM-based reasoning loop. When a user says "Send it," the LLM evaluates the chat history to retrieve the correct threadId and recipient before calling the tool. This architecture allows the agent to recover if a search fails or if the user changes their mind mid-conversation.
