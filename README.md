@@ -1,81 +1,57 @@
-AI Email Response Agent (Technical Assessment)
-A conversational AI agent built with LangChain and OpenAI that orchestrates Gmail operations. This agent allows users to search for specific emails, automatically generates professional response drafts, and sends replies only after user confirmation.
+📧 AI Email Response Agent
+An intelligent, conversational agent designed to streamline Gmail management. This tool leverages LangChain and OpenAI's GPT-4 (LLM) to orchestrate Gmail operations through a reasoning-and-action loop.
 
-🛠 Features
-Intelligent Search: Uses LLM to find the correct email thread based on user keywords.
+🎯 Objective
+This project was developed as part of a Technical Assessment for an AI Solution Engineer role. The goal was to build an "agent-with-tools" architecture capable of:
 
-Draft Generation: Context-aware reply generation using GPT-4.
+LLM-Driven Search: Using GPT-4 to interpret user intent and query Gmail.
 
-Human-in-the-Loop: Requires explicit user approval before sending any data.
+Contextual Analysis: Presenting email metadata (From, Subject, Body) to the user.
 
-Robust Threading: Ensures replies stay within the original Gmail thread.
+Response Generation: Suggesting high-context replies using the LLM's generative capabilities.
 
-Error Handling: Gracefully handles invalid IDs, API failures, and missing credentials.
+Human-in-the-Loop: Explicitly waiting for user approval before execution.
 
-🚀 Setup Instructions
-Follow these steps to run the agent using your own credentials:
+Graceful Exception Handling: Managing API errors or missing threads without crashing.
 
-1. Environment Requirements
-Python: 3.9 or higher.
+🛠 Tech Stack
+LLM: OpenAI GPT-4 (Generative AI & Reasoning)
 
-Libraries: Install dependencies via pip:
+Orchestration: LangChain (AgentExecutor & OpenAI Functions Agent)
 
-Bash
-pip install -r requirements.txt
+APIs: Google Gmail API (OAuth 2.0)
 
-2. Configure OpenAI API
-Create a file named .env in the root directory.
+Environment: python-dotenv for secure secret management
 
-Add your OpenAI API key to the file:
+🚀 Setup & Installation
+1. Install Dependencies
+ Bash
+ pip install -r requirements.txt
 
-Plaintext
-OPENAI_API_KEY=your_actual_key_here
-(Note: This project also supports loading from a key.txt if preferred.)
+3. Configure Credentials
+ OpenAI: Create a .env file and add OPENAI_API_KEY=your_key_here.
 
+ Gmail: Place your credentials.json (OAuth Desktop App) in the project root.
 
-3. Configure Gmail API (Google Cloud)
-To allow the agent to interact with your Gmail, you must provide your own Google OAuth credentials:
+3. Run the Agent
+ Bash
+ python main.py
+🧠 Design Decisions & Engineering Notes
+LLM Agentic Reasoning (ReAct)
+Unlike a scripted chatbot, this agent uses an LLM-based reasoning loop. When a user says "Send it," the LLM evaluates the chat history to retrieve the correct threadId and recipient before calling the tool. This architecture allows the agent to recover if a search fails or if the user changes their mind mid-conversation.
 
-Go to the Google Cloud Console.
+Technical Robustness
+Recipient Cleaning: The agent uses regex to isolate email addresses from "Friendly Name email@addr.com" formats, ensuring compatibility with the Gmail API.
 
-Create a new project and enable the Gmail API.
+Thread Integrity: The send_gmail_reply tool prioritizes maintaining thread consistency but includes a fallback to "New Message" if a 404 Not Found error occurs on a specific thread.
 
-Navigate to APIs & Services > Credentials.
-
-Create an OAuth 2.0 Client ID (Application type: Desktop App).
-
-Download the JSON file, rename it to credentials.json, and place it in the root directory of this project.
-
-4. Running the Agent
-Start the agent by running:
-
-Bash
-python main.py
-Note: On the first run, a browser tab will open asking you to authorize the application. Once authorized, a token.json file will be created locally to manage your session securely.
-
-🧠 Design Decisions & Assumptions
-Agentic Workflow: Instead of a rigid script, I used a ReAct-style agent. This allows the LLM to "reason" if it needs more information (like re-searching a thread) before performing an action.
-
-Verbose Filtering: Set verbose=False in the final AgentExecutor to provide a clean, chat-like interface for the user, hiding technical logs and tool-calling IDs.
-
-Extraction Logic: Gmail headers often include names (e.g., John Doe <john@example.com>). I implemented a regex-based extraction tool to ensure the send function receives a clean email address, preventing API 400 errors.
-
-Thread Safety: The agent is strictly instructed via the system prompt to wait for user confirmation. If the threadId is lost or invalid, the tool is designed to fallback to a standard send to ensure the user's reply is still delivered.
+Clean UI: verbose=False is enabled to ensure the evaluator sees a polished conversational experience rather than internal JSON processing logs.
 
 📂 Project Structure
-main.py: The entry point and conversational loop.
+main.py: The entry point and LLM agent configuration.
 
 tools.py: Custom LangChain tools for Gmail API integration.
 
-requirements.txt: List of necessary Python packages.
+requirements.txt: Project dependencies.
 
-.env.example: Template for your environment variables.
-
-⚠️ Important Security Note
-Do not include the following files in your submission:
-
-.env (Contains your private OpenAI Key)
-
-credentials.json (Contains your Google App secrets)
-
-token.json (Contains your personal Gmail access session)
+README.md: Documentation.
