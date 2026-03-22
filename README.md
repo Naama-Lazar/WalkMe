@@ -34,12 +34,12 @@ Environment: python-dotenv for secure secret management
    OpenAI API: Create a .env file in the root directory and add the key provided by WalkMe:
 
 
-  Plaintext
-  OPENAI_API_KEY=your_walkme_api_key_here
-  Gmail API: Place your credentials.json (OAuth 2.0 Desktop App) in the project root directory.
+   Plaintext
+   OPENAI_API_KEY=your_walkme_api_key_here
+   Gmail API: Place your credentials.json (OAuth 2.0 Desktop App) in the project root directory.
 
 
-  Authentication: On the first run, the agent will open a browser window to authorize your Gmail account and generate a token.json file.
+   Authentication: On the first run, the agent will open a browser window to authorize your Gmail account and generate a token.json file.
 
 
 
