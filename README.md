@@ -46,6 +46,7 @@ Thread Integrity: The send_gmail_reply tool prioritizes maintaining thread consi
 Clean UI: verbose=False is enabled to ensure the evaluator sees a polished conversational experience rather than internal JSON processing logs.
 
 📂 Project Structure
+
 main.py: The entry point and LLM agent configuration.
 
 tools.py: Custom LangChain tools for Gmail API integration.
