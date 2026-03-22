@@ -29,9 +29,7 @@ Environment: python-dotenv for secure secret management
  pip install -r requirements.txt
 
 3. Configure Credentials
- OpenAI: Create a .env file and add OPENAI_API_KEY=your_key_here.
-
-  Gmail: Place your credentials.json (OAuth Desktop App) in the project root.
+ OpenAI: Create a .env file and add OPENAI_API_KEY=your_key_here. Gmail: Place your credentials.json (OAuth Desktop App) in the project root.
 
 3. Run the Agent
  Bash
