@@ -4,6 +4,7 @@ from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from tools import search_gmail, send_gmail_reply
 
+
 # Load Key from file
 with open("key.txt", "r") as f:
     os.environ["OPENAI_API_KEY"] = f.read().strip()
